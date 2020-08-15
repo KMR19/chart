@@ -35,29 +35,29 @@ async function getCommitData() {
 
   var userName = document.getElementById("userName").value;
   var repository = document.getElementById("repositories").value;
-  console.log(repository);
+  // console.log(repository);
   var URL =
     "https://api.github.com/repos/" + userName + "/" + repository + "/commits";
   try {
     var response = await fetch(URL);
     var data = await response.json();
     commits = data;
-    console.log(commits);
+    // console.log(commits);
   } catch (error) {}
 
   commits.forEach((element) => {
     commitsDetails.push(new Date(element.commit.author.date).toDateString());
     newCommitsDetails = compressArray(commitsDetails).reverse();
   });
-  console.log(commitsDetails);
-  console.log(newCommitsDetails);
+  // console.log(commitsDetails);
+  // console.log(newCommitsDetails);
 
   newCommitsDetails.forEach((row) => {
     commitDate.push(row.value);
     commitDateCount.push(row.count);
   });
-  console.log(commitDate);
-  console.log(commitDateCount);
+  // console.log(commitDate);
+  // console.log(commitDateCount);
 
   await setup();
 }
@@ -65,16 +65,16 @@ async function getCommitData() {
 async function getRepoData() {
   repos.length = 0;
   repoName.length = 0;
-  console.log(repoName);
+  // console.log(repoName);
   var userName = document.getElementById("userName").value;
-  console.log(userName);
+  // console.log(userName);
 
   var URL = "https://api.github.com/users/" + userName + "/repos";
   try {
     var response = await fetch(URL);
     var data = await response.json();
     repos = data;
-    console.log(repos);
+    // console.log(repos);
   } catch (error) {}
 
   repos.forEach((element) => {
@@ -82,7 +82,7 @@ async function getRepoData() {
       repoName.push(element.name);
     }
   });
-  console.log(repoName);
+  // console.log(repoName);
 
   var repositories = document.getElementById("repositories");
 
